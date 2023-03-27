@@ -1,0 +1,42 @@
+﻿<Window x:Class="Kalkulacka.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Kalkulacka"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1.5*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+        <TextBox Name="TextBox" Text="" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"></TextBox>
+        <Button Name="equalSign" Click="ButtonOperationClick" Grid.Row="4" Grid.Column="2">=</Button>
+        <Button Name="plus" Click="ButtonOperationClick" Grid.Row="1" Grid.Column="3">+</Button>
+        <Button Name="minus" Click="ButtonOperationClick" Grid.Row="2" Grid.Column="3">-</Button>
+        <Button Name="times" Click="ButtonOperationClick" Grid.Row="3" Grid.Column="3">×</Button>
+        <Button Name="division" Click="ButtonOperationClick" Grid.Row="4" Grid.Column="3">÷</Button>
+        <Button Name="oneButton" Click="ButtonNumberClick"  Grid.Row="3" Grid.Column="0">1</Button>
+        <Button Name="twoButton" Click="ButtonNumberClick" Grid.Row="3" Grid.Column="1">2</Button>
+        <Button Name="threeButton" Click="ButtonNumberClick" Grid.Row="3" Grid.Column="2">3</Button>
+        <Button Name="fourButton" Click="ButtonNumberClick" Grid.Row="2" Grid.Column="0">4</Button>
+        <Button Name="fiveButton" Click="ButtonNumberClick" Grid.Row="2" Grid.Column="1">5</Button>
+        <Button Name="sixButton" Click="ButtonNumberClick" Grid.Row="2" Grid.Column="2">6</Button>
+        <Button Name="sevenButton" Click="ButtonNumberClick" Grid.Row="1" Grid.Column="0">7</Button>
+        <Button Name="eightButton" Click="ButtonNumberClick" Grid.Row="1" Grid.Column="1">8</Button>
+        <Button Name="nineButton" Click="ButtonNumberClick" Grid.Row="1" Grid.Column="2">9</Button>
+        <Button Name="zeroButton" Click="ButtonNumberClick" Grid.Row="4" Grid.Column="0">0</Button>
+        <Button Name="decimalButton" Click="ButtonDecimalClick" Grid.Row="4" Grid.Column="1">,</Button>
+        <Button Name="cButton" Grid.Row="0" Click="ButtonCClick" Grid.Column="4">C</Button>
+    </Grid>
+</Window>
