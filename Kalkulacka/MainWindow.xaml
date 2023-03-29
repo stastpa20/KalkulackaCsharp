@@ -6,47 +6,52 @@
         xmlns:local="clr-namespace:Kalkulacka"
         mc:Ignorable="d"
         Title="MainWindow" Height="500" Width="300"
-        MinHeight="200" MinWidth="70">
+        MinHeight="227.5" MinWidth="70">
     <Window.Resources>
         <Style TargetType="Button">
-            <Setter Property="FontSize" Value="2.5em"/>
+            <Setter Property="BorderBrush" Value="Gray"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="Background" Value="DarkGray"/>
+            <Setter Property="Foreground" Value="White"/>
         </Style>
         <Style TargetType="TextBox">
-            <Setter Property="FontSize" Value="2.5em"/>
+            <Setter Property="BorderBrush" Value="Gray"/>
+            <Setter Property="IsReadOnly" Value="True"/>
         </Style>
     </Window.Resources>
-    
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*" />
-            <ColumnDefinition Width="1*" />
-            <ColumnDefinition Width="1*" />
-            <ColumnDefinition Width="1*" />
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="1*" />
-            <RowDefinition Height="1*" />
-            <RowDefinition Height="1*" />
-            <RowDefinition Height="1*" />
-            <RowDefinition Height="1*" />
-        </Grid.RowDefinitions>
-        <TextBox Name="TextBox" Text="" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"></TextBox>
-        <Button Name="equalSign" Click="ButtonEqualClick" Grid.Row="4" Grid.Column="2">=</Button>
-        <Button Name="plus" Click="ButtonOperationClick" Grid.Row="1" Grid.Column="3">+</Button>
-        <Button Name="minus" Click="ButtonOperationClick" Grid.Row="2" Grid.Column="3">-</Button>
-        <Button Name="times" Click="ButtonOperationClick" Grid.Row="3" Grid.Column="3">×</Button>
-        <Button Name="division" Click="ButtonOperationClick" Grid.Row="4" Grid.Column="3">÷</Button>
-        <Button Name="oneButton" Click="ButtonNumberClick"  Grid.Row="3" Grid.Column="0">1</Button>
-        <Button Name="twoButton" Click="ButtonNumberClick" Grid.Row="3" Grid.Column="1">2</Button>
-        <Button Name="threeButton" Click="ButtonNumberClick" Grid.Row="3" Grid.Column="2">3</Button>
-        <Button Name="fourButton" Click="ButtonNumberClick" Grid.Row="2" Grid.Column="0">4</Button>
-        <Button Name="fiveButton" Click="ButtonNumberClick" Grid.Row="2" Grid.Column="1">5</Button>
-        <Button Name="sixButton" Click="ButtonNumberClick" Grid.Row="2" Grid.Column="2">6</Button>
-        <Button Name="sevenButton" Click="ButtonNumberClick" Grid.Row="1" Grid.Column="0">7</Button>
-        <Button Name="eightButton" Click="ButtonNumberClick" Grid.Row="1" Grid.Column="1">8</Button>
-        <Button Name="nineButton" Click="ButtonNumberClick" Grid.Row="1" Grid.Column="2">9</Button>
-        <Button Name="zeroButton" Click="ButtonNumberClick" Grid.Row="4" Grid.Column="0">0</Button>
-        <Button Name="decimalButton" Click="ButtonDecimalClick" Grid.Row="4" Grid.Column="1">,</Button>
-        <Button Name="cButton" Click="ButtonCClick" Grid.Row="0"  Grid.Column="4">C</Button>
-    </Grid>
+    <Viewbox Height="auto" Width="auto" Stretch="Uniform" StretchDirection="UpOnly" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+            </Grid.RowDefinitions>
+            <TextBox Name="TextBox" BorderBrush="Gray" Text="" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"></TextBox>
+            <Button Name="equalSign" Click="ButtonEqualClick" Grid.Row="4" Grid.Column="2">=</Button>
+            <Button Name="plus" Click="ButtonOperationClick" Grid.Row="4" Grid.Column="3" Background="Orange">+</Button>
+            <Button Name="minus" Click="ButtonOperationClick" Grid.Row="3" Grid.Column="3" Background="Orange">-</Button>
+            <Button Name="times" Click="ButtonOperationClick" Grid.Row="2" Grid.Column="3" Background="Orange">×</Button>
+            <Button Name="division" Click="ButtonOperationClick" Grid.Row="1" Grid.Column="3" Background="Orange">÷</Button>
+            <Button Name="oneButton" Click="ButtonNumberClick"  Grid.Row="3" Grid.Column="0">1</Button>
+            <Button Name="twoButton" Click="ButtonNumberClick" Grid.Row="3" Grid.Column="1">2</Button>
+            <Button Name="threeButton" Click="ButtonNumberClick" Grid.Row="3" Grid.Column="2">3</Button>
+            <Button Name="fourButton" Click="ButtonNumberClick" Grid.Row="2" Grid.Column="0">4</Button>
+            <Button Name="fiveButton" Click="ButtonNumberClick" Grid.Row="2" Grid.Column="1">5</Button>
+            <Button Name="sixButton" Click="ButtonNumberClick" Grid.Row="2" Grid.Column="2">6</Button>
+            <Button Name="sevenButton" Click="ButtonNumberClick" Grid.Row="1" Grid.Column="0">7</Button>
+            <Button Name="eightButton" Click="ButtonNumberClick" Grid.Row="1" Grid.Column="1">8</Button>
+            <Button Name="nineButton" Click="ButtonNumberClick" Grid.Row="1" Grid.Column="2">9</Button>
+            <Button Name="zeroButton" Click="ButtonNumberClick" Grid.Row="4" Grid.Column="0">0</Button>
+            <Button Name="decimalButton" Click="ButtonDecimalClick" Grid.Row="4" Grid.Column="1">,</Button>
+            <Button Name="cButton" Click="ButtonCClick" Grid.Row="0"  Grid.Column="4" >C</Button>
+        </Grid>
+    </Viewbox>
 </Window>
