@@ -21,7 +21,7 @@ namespace Kalkulacka
     /// </summary>
     public partial class MainWindow : Window
     {
-        private string equation = "";
+        //private string equation = "";
         private double result = 0;
         string _operatorG;
         int elementsCounter = 0;
@@ -45,8 +45,12 @@ namespace Kalkulacka
                 resulted = false;
                 TextBox.Clear();
             }
+            if (operators.Contains(TextBox.Text[TextBox.Text.Length - 1])
+            {
+                elementsCounter++;
+            }
             TextBox.Text += number;
-            elementsCounter++;
+            
         }
         private void ButtonEqualClick(object sender, RoutedEventArgs routedEventArgs)
         {
@@ -110,8 +114,8 @@ namespace Kalkulacka
                 TextBox.Text = result.ToString();
                 elementsCounter = 1;
                 resulted = true;
-            } /*else {*/
-            _operatorG = _operator; /*}*/
+            } 
+            _operatorG = _operator;
             TextBox.Text += _operator;
             elementsCounter++;
 
