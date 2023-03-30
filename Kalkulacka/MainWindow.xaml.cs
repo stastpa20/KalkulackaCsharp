@@ -27,6 +27,7 @@ namespace Kalkulacka
         int elementsCounter = 0;
         bool resulted = false;
         char[] operators = new char[] { '+', '-', '*', '/' };
+        //private bool first = true;
 
         string[] elements = new string[] { };
 
@@ -45,36 +46,50 @@ namespace Kalkulacka
                 resulted = false;
                 TextBox.Clear();
             }
-            if (operators.Contains(TextBox.Text[TextBox.Text.Length - 1])
+
+            if (TextBox.Text.Length > 0)
+            {
+                if (operators.Contains(TextBox.Text[TextBox.Text.Length - 1]) && !resulted)
+                {
+                    elementsCounter++;
+                }
+            }
+            else
             {
                 elementsCounter++;
             }
+            
             TextBox.Text += number;
             
         }
         private void ButtonEqualClick(object sender, RoutedEventArgs routedEventArgs)
         {
+            
             elements = TextBox.Text.Split(operators);
-            switch (_operatorG)
+            if (elements.Length > 1)
             {
-                case "+":
-                    result = double.Parse(elements[0]) + double.Parse(elements[1]);
-                    break;
-                case "-":
-                    result = double.Parse(elements[0]) - double.Parse(elements[1]);
-                    break;
-                case "*":
-                    result = double.Parse(elements[0]) * double.Parse(elements[1]);
-                    break;
-                case "/":
-                    result = double.Parse(elements[0]) / double.Parse(elements[1]);
-                    break;
-                default:
-                    break;
+                switch (_operatorG)
+                {
+                    case "+":
+                        result = double.Parse(elements[0]) + double.Parse(elements[1]);
+                        break;
+                    case "-":
+                        result = double.Parse(elements[0]) - double.Parse(elements[1]);
+                        break;
+                    case "*":
+                        result = double.Parse(elements[0]) * double.Parse(elements[1]);
+                        break;
+                    case "/":
+                        result = double.Parse(elements[0]) / double.Parse(elements[1]);
+                        break;
+                    default:
+                        break;
+                }
+                TextBox.Text = result.ToString();
+                resulted = true;
+                elementsCounter = 1;
             }
-            TextBox.Text = result.ToString();
-            resulted = true;
-            elementsCounter = 1;
+            
         }
         private void ButtonOperationClick(object sender, RoutedEventArgs routedEventArgs)
         {
@@ -85,11 +100,15 @@ namespace Kalkulacka
             else if (btnOperator.Content.ToString() == "×") { _operator = "*"; }
             else { _operator = btnOperator.Content.ToString(); }
 
-            if (operators.Contains(TextBox.Text[TextBox.Text.Length - 1]/*.ToString()*//*.Substring(TextBox.Text.Length - 1, 1)*/))
+            if (TextBox.Text.Length > 0)
             {
-                TextBox.Text = TextBox.Text.Remove(TextBox.Text.Length - 1, 1);
-                elementsCounter--;
+                if (operators.Contains(TextBox.Text[TextBox.Text.Length - 1]))
+                {
+                    TextBox.Text = TextBox.Text.Remove(TextBox.Text.Length - 1, 1);
+                    elementsCounter--;
+                }
             }
+            
             if (elementsCounter == 3)
             {
                 elements = TextBox.Text.Split(operators);
@@ -114,10 +133,17 @@ namespace Kalkulacka
                 TextBox.Text = result.ToString();
                 elementsCounter = 1;
                 resulted = true;
-            } 
-            _operatorG = _operator;
-            TextBox.Text += _operator;
-            elementsCounter++;
+            }
+
+            
+            
+            if (TextBox.Text.Length > 0)
+            {
+                _operatorG = _operator;
+                TextBox.Text += _operator;
+                elementsCounter++;
+            }
+            
 
         }
         private void ButtonCClick(object sender, RoutedEventArgs routedEventArgs)
@@ -127,10 +153,15 @@ namespace Kalkulacka
         }
         private void ButtonDecimalClick(object sender, RoutedEventArgs routedEventArgs)
         {
-            if (!TextBox.Text.Contains(","))
-            {
-                TextBox.Text += ",";
-            }
+            
+                string[] veci = TextBox.Text.Split(operators);
+                if (veci.Length > 0)
+                {
+                    if (!veci[veci.Length - 1].Contains(","))
+                    {
+                        TextBox.Text += ",";
+                    }
+                }
         }
     }
 }
