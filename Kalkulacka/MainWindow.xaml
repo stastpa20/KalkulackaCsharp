@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Kalkulacka"
         mc:Ignorable="d"
         Title="MainWindow" Height="500" Width="300"
-        MinHeight="227.5" MinWidth="70">
+        MinHeight="227.5" MinWidth="70" Background="Black">
     <Window.Resources>
         <Style TargetType="Button">
             <Setter Property="BorderBrush" Value="Gray"/>
@@ -19,7 +19,7 @@
             <Setter Property="IsReadOnly" Value="True"/>
         </Style>
     </Window.Resources>
-    <Viewbox Height="auto" Width="auto" Stretch="Uniform" StretchDirection="UpOnly" HorizontalAlignment="Center" VerticalAlignment="Center">
+    <Viewbox Stretch="Uniform" StretchDirection="Both" HorizontalAlignment="Center" VerticalAlignment="Center" >
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*" />

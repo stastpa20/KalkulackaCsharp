@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -26,42 +27,45 @@ namespace Kalkulacka
         string _operatorG;
         int elementsCounter = 0;
         bool resulted = false;
-        char[] operators = new char[] { '+', '-', '*', '/' };
-        //private bool first = true;
+        char[] operators = new char[] { '+', '─', '*', '/' };
+        string _operator;
 
         string[] elements = new string[] { };
 
         public MainWindow()
         {
             InitializeComponent();
-        }
 
+        }
+        void CountElements()
+        {
+            int elementsC = 0;
+            bool oper = false;
+            foreach (char c in operators)
+            {
+                if (TextBox.Text.Contains(c))
+                {
+                    oper = true;
+                }
+            }
+            if (oper) { elementsC = TextBox.Text.Split(operators).Length + 1; }
+            else { elementsC = TextBox.Text.Split(operators).Length; }
+            elementsCounter = elementsC;
+        }
         private void ButtonNumberClick(object sender, RoutedEventArgs routedEventArgs)
         {
             Button btnNumber = (Button)sender;
             int number = int.Parse(btnNumber.Content.ToString());
+            CountElements();
             if (elementsCounter == 1 && resulted)
             {
-                elementsCounter--;
                 resulted = false;
                 TextBox.Clear();
             }
-
-            if (TextBox.Text.Length > 0)
-            {
-                if (operators.Contains(TextBox.Text[TextBox.Text.Length - 1]) && !resulted)
-                {
-                    elementsCounter++;
-                }
-            }
-            else
-            {
-                elementsCounter++;
-            }
-            
-            TextBox.Text += number;
-            
+            CountElements();             
+            TextBox.Text += number;            
         }
+        
         private void ButtonEqualClick(object sender, RoutedEventArgs routedEventArgs)
         {
             
@@ -73,7 +77,7 @@ namespace Kalkulacka
                     case "+":
                         result = double.Parse(elements[0]) + double.Parse(elements[1]);
                         break;
-                    case "-":
+                    case "─":
                         result = double.Parse(elements[0]) - double.Parse(elements[1]);
                         break;
                     case "*":
@@ -85,39 +89,36 @@ namespace Kalkulacka
                     default:
                         break;
                 }
+                _operatorG = "";
                 TextBox.Text = result.ToString();
                 resulted = true;
-                elementsCounter = 1;
+                CountElements();
             }
-            
         }
         private void ButtonOperationClick(object sender, RoutedEventArgs routedEventArgs)
         {
             Button btnOperator = (Button)sender;
-            string _operator;
 
-            if (btnOperator.Content.ToString() == "÷") { _operator = "/"; }
-            else if (btnOperator.Content.ToString() == "×") { _operator = "*"; }
-            else { _operator = btnOperator.Content.ToString(); }
+            
 
             if (TextBox.Text.Length > 0)
             {
                 if (operators.Contains(TextBox.Text[TextBox.Text.Length - 1]))
                 {
                     TextBox.Text = TextBox.Text.Remove(TextBox.Text.Length - 1, 1);
-                    elementsCounter--;
+                    CountElements();
                 }
             }
-            
+            CountElements();
             if (elementsCounter == 3)
             {
                 elements = TextBox.Text.Split(operators);
-                switch (_operatorG)
+                switch (_operator)
                 {
                     case "+":
                         result = double.Parse(elements[0]) + double.Parse(elements[1]);
                         break;
-                    case "-":
+                    case "─":
                         result = double.Parse(elements[0]) - double.Parse(elements[1]);
                         break;
                     case "*":
@@ -131,19 +132,22 @@ namespace Kalkulacka
 
                 }
                 TextBox.Text = result.ToString();
-                elementsCounter = 1;
+                CountElements();
                 resulted = true;
-            }
-
+            } 
             
+                if (btnOperator.Content.ToString() == "÷") { _operator = "/"; }
+                else if (btnOperator.Content.ToString() == "×") { _operator = "*"; }
+                else if (btnOperator.Content.ToString() == "-") { _operator = "─"; }
+                else { _operator = btnOperator.Content.ToString(); }
+                      
             
             if (TextBox.Text.Length > 0)
             {
                 _operatorG = _operator;
                 TextBox.Text += _operator;
-                elementsCounter++;
+                CountElements();
             }
-            
 
         }
         private void ButtonCClick(object sender, RoutedEventArgs routedEventArgs)
