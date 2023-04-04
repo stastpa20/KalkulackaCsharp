@@ -48,8 +48,8 @@ namespace Kalkulacka
                     oper = true;
                 }
             }
-            if (oper) { elementsC = TextBox.Text.Split(operators).Length + 1; }
-            else { elementsC = TextBox.Text.Split(operators).Length; }
+            if (oper) { elementsC = TextBox.Text.Split(operators, StringSplitOptions.RemoveEmptyEntries).Length + 1; }
+            else { elementsC = TextBox.Text.Split(operators, StringSplitOptions.RemoveEmptyEntries ).Length; }
             elementsCounter = elementsC;
         }
         private void ButtonNumberClick(object sender, RoutedEventArgs routedEventArgs)
