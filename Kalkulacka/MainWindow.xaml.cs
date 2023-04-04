@@ -69,7 +69,7 @@ namespace Kalkulacka
         private void ButtonEqualClick(object sender, RoutedEventArgs routedEventArgs)
         {
             
-            elements = TextBox.Text.Split(operators);
+            elements = TextBox.Text.Split(operators, StringSplitOptions.RemoveEmptyEntries);
             if (elements.Length > 1)
             {
                 switch (_operatorG)
